@@ -12,6 +12,9 @@ def limpar_console():
 
 loop = True
 while loop == True:
+    print("==========================================")
+    print("============= MENU PRINCIPAL =============")
+    print("==========================================")
     print("1. Adicionar um aluno")
     print("2. Listar todos os alunos")
     print("3. Remover aluno pela matrícula")
@@ -21,7 +24,7 @@ while loop == True:
     print("7. Calcular média de um aluno")
     print("0. Sair")
     valor = input("Digite uma opção: ")
-    limpar_console()
+    
 
     if valor == "0":
         print(f"Opção escolhida: {valor}. Sair")
@@ -29,33 +32,48 @@ while loop == True:
         loop = False
 
     if valor == "1":
-        print(f"Opção escolhida: {valor}. Adicionar um aluno")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Adicionar um aluno")
         matricula = input("Digite a matrícula do aluno: ")
         nome = input("Digite o nome do aluno: ")
-        nota1 = float(input("Digite a nota 1 do aluno: "))
-        nota2 = float(input("Digite a nota 2 do aluno: "))
-        media = (nota1+nota2)/2
-        novo_aluno = Aluno(nome, matricula, nota1, nota2, media)
+        novo_aluno = Aluno(nome, matricula)
         arvore.inserir(novo_aluno)
+        
 
     if valor == "2":
-        print(f"Opção escolhida: {valor}.")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Listar Alunos")
+        arvore.listar_alunos()        
+        
 
     if valor == "3":
-        print(f"Opção escolhida: {valor}. ")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Remover Aluno pela matrícula")
+        matricula = input("Digite a matrícula que deseja remover: ")
+        arvore.remover(matricula)
         
 
     if valor == "4":
-        print(f"Opção escolhida: {valor}. Buscar aluno pela matrícula")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Buscar aluno pela matrícula")
         matricula = input("Digite a matrícula que deseja pesquisar: ")
+        limpar_console()
         arvore.busca(matricula)
 
     if valor == "5":
-        print(f"Opção escolhida: {valor}.")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Total de alunos")
         print(f"Total de alunos cadastrados: {arvore.totalNO()}")
 
     if valor == "6":
-        print(f"Opção escolhida: {valor}.")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Cadastrar Notas de um aluno")
+        matricula = input("Digite a matrícula do aluno que você deseja alterar a nota: ")
+        arvore.inserirNota(matricula)
 
     if valor == "7":
-        print(f"Opção escolhida: {valor}.")
+        limpar_console()
+        print(f"Opção escolhida: {valor}- Calcular a média")
+        matricula = input("Digite a matrícula do aluno que você deseja calcular a média: ")
+        arvore.media(matricula)
+        
